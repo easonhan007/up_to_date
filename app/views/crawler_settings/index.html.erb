@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Crawler settings</h1>
+
+<div id="crawler_settings">
+  <% @crawler_settings.each do |crawler_setting| %>
+    <%= render crawler_setting %>
+    <p>
+      <%= link_to "Show this crawler setting", crawler_setting %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New crawler setting", new_crawler_setting_path %>

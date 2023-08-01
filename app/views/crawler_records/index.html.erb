@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Crawler records</h1>
+
+<div id="crawler_records">
+  <% @crawler_records.each do |crawler_record| %>
+    <%= render crawler_record %>
+    <p>
+      <%= link_to "Show this crawler record", crawler_record %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New crawler record", new_crawler_record_path %>

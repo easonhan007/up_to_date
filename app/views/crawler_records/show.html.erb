@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @crawler_record %>
+
+<div>
+  <%= link_to "Edit this crawler record", edit_crawler_record_path(@crawler_record) %> |
+  <%= link_to "Back to crawler records", crawler_records_path %>
+
+  <%= button_to "Destroy this crawler record", @crawler_record, method: :delete %>
+</div>

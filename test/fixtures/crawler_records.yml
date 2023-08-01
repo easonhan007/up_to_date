@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: crawler_records
+#
+#  id                 :integer          not null, primary key
+#  url_count          :integer
+#  success            :integer
+#  failed             :integer
+#  urls               :text
+#  crawler_setting_id :integer          not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
+one:
+  url_count: 1
+  success: 1
+  failed: 1
+  urls: MyText
+  crawler_setting: one
+
+two:
+  url_count: 1
+  success: 1
+  failed: 1
+  urls: MyText
+  crawler_setting: two
