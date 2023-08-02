@@ -77,5 +77,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-
 gem "whenever", "~> 1.0", require: false
+gem 'pagy', '~> 6.0' # omit patch digit

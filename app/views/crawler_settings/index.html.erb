@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to "New crawler setting", new_crawler_setting_path, class: 'btn btn-primary mb-2' %>
 
-<h1>Crawler settings</h1>
+    <h3>Crawler settings</h3>
 
-<div id="crawler_settings">
-  <% @crawler_settings.each do |crawler_setting| %>
-    <%= render crawler_setting %>
-    <p>
-      <%= link_to "Show this crawler setting", crawler_setting %>
-    </p>
-  <% end %>
+    <div id="crawler_settings">
+      <% @crawler_settings.each do |crawler_setting| %>
+        <%= render crawler_setting %>
+        <p>
+          <%= link_to "Show this crawler setting", crawler_setting %>
+        </p>
+      <% end %>
+    </div>
+
+  </div>
 </div>
-
-<%= link_to "New crawler setting", new_crawler_setting_path %>

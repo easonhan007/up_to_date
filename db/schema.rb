@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_104348) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_023914) do
   create_table "crawler_records", force: :cascade do |t|
     t.integer "url_count"
     t.integer "success"
@@ -42,7 +42,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_104348) do
     t.integer "crawler_record_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "crawler_setting_id", null: false
     t.index ["crawler_record_id"], name: "index_posts_on_crawler_record_id"
+    t.index ["crawler_setting_id"], name: "index_posts_on_crawler_setting_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +62,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_104348) do
   add_foreign_key "crawler_records", "crawler_settings"
   add_foreign_key "crawler_settings", "users"
   add_foreign_key "posts", "crawler_records"
+  add_foreign_key "posts", "crawler_settings"
 end

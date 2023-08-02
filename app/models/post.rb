@@ -12,6 +12,9 @@
 #
 class Post < ApplicationRecord
   belongs_to :crawler_record
+  belongs_to :crawler_setting
 
   validates :title, :content, :from, presence: true
+
+  scope :by_created, -> {order('created_at DESC')}
 end

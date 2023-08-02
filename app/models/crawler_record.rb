@@ -14,4 +14,6 @@
 class CrawlerRecord < ApplicationRecord
   belongs_to :crawler_setting
   has_many :posts
+
+  scope :by_created, ->{order('created_at DESC')}
 end

@@ -3,7 +3,7 @@ class CrawlerRecordsController < ApplicationController
 
   # GET /crawler_records or /crawler_records.json
   def index
-    @crawler_records = CrawlerRecord.all
+    @pagy, @crawler_records = pagy(CrawlerRecord.by_created.all)
   end
 
   # GET /crawler_records/1 or /crawler_records/1.json
