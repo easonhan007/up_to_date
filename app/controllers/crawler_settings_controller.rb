@@ -60,6 +60,7 @@ class CrawlerSettingsController < ApplicationController
   end
 
   def scrape
+    @crawler_setting.scrape()
   end
 
   private
