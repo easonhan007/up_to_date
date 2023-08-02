@@ -17,3 +17,13 @@ if Rails.env.development?
 	end 
 
 end #if
+
+
+puts "creating the first setting"
+CrawlerSetting.create(name: 'vox', 
+	index_page_url: 'https://www.vox.com/', 
+	index_page_css: '.c-newspaper__main h2>a',
+	detail_page_title_css: '.c-page-title',
+	detail_page_content_css: 'div.c-entry-content',
+	detail_page_clean_up_css: '.c-article-footer,.c-float-right,.m-ad'
+)
