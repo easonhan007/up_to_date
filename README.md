@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+### TODO
+
+- logout link
+- redirect to history page after scraping
+- devise views revise 
+- cron job that scrape all the settings
