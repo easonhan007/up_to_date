@@ -61,6 +61,7 @@ class CrawlerSettingsController < ApplicationController
 
   def scrape
     @crawler_setting.scrape()
+    redirect_to crawler_records_url, notice: 'Finished'
   end
 
   private
