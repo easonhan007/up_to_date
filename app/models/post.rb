@@ -17,5 +17,5 @@ class Post < ApplicationRecord
   validates :title, :content, :from, presence: true
 
   scope :by_created, -> {order('created_at DESC')}
-  scope :recent, -> by_created.limit(10)
+  scope :recent, -> {by_created.limit(10)}
 end
