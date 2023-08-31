@@ -4,7 +4,7 @@ class CrawlerSettingsController < ApplicationController
 
   # GET /crawler_settings or /crawler_settings.json
   def index
-    @crawler_settings = current_user.crawler_settings.all
+    @crawler_settings = current_user.crawler_settings.order('created_at DESC').all
   end
 
   # GET /crawler_settings/1 or /crawler_settings/1.json

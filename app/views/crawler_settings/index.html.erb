@@ -2,16 +2,30 @@
   <div class="col-md-8">
     <%= link_to "New crawler setting", new_crawler_setting_path, class: 'btn btn-primary mb-2' %>
 
-    <h3>Crawler settings</h3>
+    <h3 class="mb-2">Crawler settings</h3>
 
-    <div id="crawler_settings">
-      <% @crawler_settings.each do |crawler_setting| %>
-        <%= render crawler_setting %>
-        <p>
-          <%= link_to "Show this crawler setting", crawler_setting %>
-        </p>
-      <% end %>
-    </div>
+    <table class="table">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Operation</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @crawler_settings.each do |setting| %>
+          <tr>
+            <td><%= setting.id %></td>
+            <td><%= link_to setting.name, setting %></td>
+            <td><%= time_ago_in_words setting.created_at %></td>
+            <td><%= link_to 'Edit', edit_crawler_setting_path(setting), class: 'btn btn-primary btn-sm' %></td>
+            <td>
+              <%= link_to "Scrape", scrape_crawler_setting_path(setting), class: 'btn btn-success btn-sm' %> 
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
   </div>
 </div>

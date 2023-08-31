@@ -58,11 +58,16 @@ class CrawlerSetting < ApplicationRecord
         end #each
 
         title = post_doc.at_css(detail_page_title_css.strip).content rescue ''
-        body = post_doc.at_css(detail_page_content_css.strip).inner_html rescue ''
-				if (not title.blank?) and (not body.blank?)
-	        post[:title] = title
+        # body = post_doc.at_css(detail_page_content_css.strip).inner_html rescue ''
+				body_arr = []
+				post_doc.css(detail_page_content_css.strip).each do |dom|
+					body_arr.push(dom.inner_html)
+				end
+				# if (not title.blank?) and (not body.blank?)
+				if (not title.blank?) and (not body_arr.size.eql?(0))
+	        post[:title] = title.strip()
 	        post[:url] = url
-	        post[:content] = body
+	        post[:content] = body_arr.join("\n")
 	        posts.push(post)
 				end 
       end #each 
@@ -77,8 +82,14 @@ class CrawlerSetting < ApplicationRecord
 
 		posts.each do |post|
 			unless Post.exists?(title: post[:title])
-				puts "Creating #{post[:title]}"
+				Rails.logger.info("Creating #{post[:title]}")
 				Post.create(title: post[:title], content: post[:content], from: post[:url], crawler_record_id: r.id, crawler_setting_id: id)
+			else
+				# update the post
+				Rails.logger.info("Updating #{post[:title]}")
+				post = Post.where(title: post[:title]).first
+				post.content = post[:content]
+				post.save()
 			end
 		end #each
   end
