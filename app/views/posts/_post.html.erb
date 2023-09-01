@@ -1,9 +1,12 @@
 <h3 class="mb-2">
   <%= post.title %>
-  <small class="text text-secondary"><% post.from %></small>
 </h3>
+<div class="mb-2">
+  <p class="text text-secondary mb-1"> <%= post.crawler_setting.name %> </p>
+  <p ><%= link_to post.from, post.from %></p> 
+</div>
 
-<article style="font-size: 1.2em">
+<article style="font-size: 1.1em">
   <%== post.content %>
 </article>
 

@@ -9,7 +9,7 @@
       <tbody>
         <% @posts.each do |post|%>
           <tr>
-            <td style="font-size:1.2em" title="<%= post.title %>"><%= link_to post.title.truncate(60), post_path(post)%></td>
+            <td style="font-size:1.1em" title="<%= post.title %>"><%= link_to post.title.truncate(60), post_path(post)%></td>
             <td><%= post.crawler_setting.name %></td>
             <td title="<%= post.from %>"><%= post.from.truncate 20 %></td>
           </tr>   
