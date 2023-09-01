@@ -13,7 +13,13 @@ class CrawlerSettingsController < ApplicationController
 
   # GET /crawler_settings/new
   def new
-    @crawler_setting = CrawlerSetting.new
+    if params[:from]
+      @crawler_setting = CrawlerSetting.find(params[:from])
+      @crawler_setting.name = ''
+      @crawler_setting.index_page_url = ''
+    else
+      @crawler_setting = CrawlerSetting.new
+    end #if
   end
 
   # GET /crawler_settings/1/edit

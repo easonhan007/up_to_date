@@ -1,32 +1,33 @@
 <div id="<%= dom_id crawler_setting %>">
-  <p>
-    <strong>Name:</strong>
-    <%= crawler_setting.name %>
-  </p>
-
-  <p>
-    <strong>Index page url:</strong>
-    <%= crawler_setting.index_page_url %>
-  </p>
-
-  <p>
-    <strong>Index page css:</strong>
-    <%= crawler_setting.index_page_css %>
-  </p>
-
-  <p>
-    <strong>Detail page title css:</strong>
-    <%= crawler_setting.detail_page_title_css %>
-  </p>
-
-  <p>
-    <strong>Detail page content css:</strong>
-    <%= crawler_setting.detail_page_content_css %>
-  </p>
-
-  <p>
-    <strong>Detail Page Clean Up CSS</strong>
-    <%= crawler_setting.detail_page_clean_up_css %>
-  </p>
-
+<dl class="row">
+  <dt class="col-3">Name:</dt>
+  <dd class="col-9"> <%= crawler_setting.name %> </dd>
+  <dt class="col-3">Index page url:</dt>
+  <dd class="col-9">
+    <%= link_to crawler_setting.index_page_url, crawler_setting.index_page_url %> </code>
+  </dd>
+  
+  <dt class="col-3">Index page css:</dt>
+  <dd class="col-9">
+    <code>
+      <%= crawler_setting.index_page_css %>
+    </code>
+  </dd>
+  <dt class="col-3">Detail page title css:</dt>
+  <dd class="col-9">
+    <code> <%= crawler_setting.detail_page_title_css %> </code>
+  </dd>
+  <dt class="col-3">Detail page content css:</dt>
+  <dd class="col-9">
+    <code>
+      <%= crawler_setting.detail_page_content_css %>
+    </code>
+  </dd>
+    <dt class="col-3">Detail Page Clean Up CSS</dt>
+  <dd class="col-9">
+    <code>
+      <%= crawler_setting.detail_page_clean_up_css %>
+    </code>
+  </dd>
+</dl>
 </div>
