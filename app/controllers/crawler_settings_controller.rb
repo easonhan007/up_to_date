@@ -14,9 +14,11 @@ class CrawlerSettingsController < ApplicationController
   # GET /crawler_settings/new
   def new
     if params[:from]
-      @crawler_setting = CrawlerSetting.find(params[:from])
-      @crawler_setting.name = ''
-      @crawler_setting.index_page_url = ''
+      @setting = CrawlerSetting.find(params[:from])
+      @crawler_setting = CrawlerSetting.new
+      %w(index_page_css detail_page_title_css detail_page_content_css detail_page_clean_up_css).each do |field|
+        @crawler_setting.send(field + "=", @setting.send(field))
+      end
     else
       @crawler_setting = CrawlerSetting.new
     end #if
