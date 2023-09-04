@@ -1,0 +1,17 @@
+<table class="table">
+	<thead>
+		<th>ID</th>
+		<th>Email</th>
+		<th>Created At</th>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id%></td>
+				<td><%= user.email%></td>
+				<td><%= time_ago_in_words user.created_at%> ago </td>
+			</tr>
+		<% end %>
+	</tbody>
+	
+</table>
