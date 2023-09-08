@@ -23,11 +23,15 @@
       <%= crawler_setting.detail_page_content_css %>
     </code>
   </dd>
-    <dt class="col-3">Detail Page Clean Up CSS</dt>
+  <dt class="col-3">Detail Page Clean Up CSS</dt>
   <dd class="col-9">
     <code>
       <%= crawler_setting.detail_page_clean_up_css %>
     </code>
+  </dd>
+  <dt class="col-3">Category</dt>
+  <dd class="col-9">
+    <%= link_to crawler_setting.category.name, crawler_setting.category %>
   </dd>
 </dl>
 </div>
