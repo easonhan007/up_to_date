@@ -12,10 +12,13 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  detail_page_clean_up_css :text
+#  category_id              :integer          default(1), not null
 #
 class CrawlerSetting < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :crawler_records
+  has_many :posts
 
   validates :name, :index_page_url, :index_page_css, :detail_page_title_css, :detail_page_content_css, presence: true
 

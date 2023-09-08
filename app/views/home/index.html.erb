@@ -1,13 +1,13 @@
-<table class="table">
-    <thead>
-        <th>Recent Post</th>
-    </thead>
-    <tbody>
-        <% @posts.each do |post|%>
-            <tr>
-                <td><%= link_to post.title, post %></td>
-            </tr> 
-        <% end %>
-        
-    </tbody>
-</table>
+<div class="row">
+    <% @categories.each do |category|%>
+        <div class="col-md-6 col-lg-4 my-2">
+            <h6><%= category.name %></h6>
+            <% if category %>
+                <%= render partial: 'shared/post_list', locals: {posts: category.last_ten_posts} %> 
+            <% end %>
+            <div class="text-center">
+                <%= link_to 'More', cat_path(category.slug), style: 'text-decoration:none' %>
+            </div>
+        </div>
+    <% end %>
+</div>

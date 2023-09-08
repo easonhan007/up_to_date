@@ -2,13 +2,14 @@
 #
 # Table name: posts
 #
-#  id                :integer          not null, primary key
-#  title             :string
-#  content           :text
-#  from              :string
-#  crawler_record_id :integer          not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id                 :integer          not null, primary key
+#  title              :string
+#  content            :text
+#  from               :string
+#  crawler_record_id  :integer          not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  crawler_setting_id :integer          not null
 #
 require "test_helper"
 

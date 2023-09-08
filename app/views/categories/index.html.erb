@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h3>Categories</h3>
+<%= link_to "New category", new_category_path, class: 'btn btn-primary' %>
+
+<div id="categories">
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Created At</th>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.id, category %></td>
+        <td><%= category.name %></td>
+        <td><%= time_ago_in_words category.created_at %> ago </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+

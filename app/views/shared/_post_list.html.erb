@@ -1,0 +1,5 @@
+<ul class="list-unstyled">
+    <% posts.each do |post| %>
+        <li class="mb-1 post-list"><%= link_to post.title, post, style: "text-decoration: none;font-size:1.1em"%></li>
+    <% end %>
+</ul>

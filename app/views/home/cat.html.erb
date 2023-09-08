@@ -1,0 +1,8 @@
+<% @category.crawler_settings.each do |setting|%>
+    <div class="row">
+        <div class="col col-md-8">
+            <h5><%= setting.name %></h5>
+            <%= render partial: 'shared/post_list', locals: {posts: setting.posts.recent } %> 
+        </div>
+    </div>
+<% end %>

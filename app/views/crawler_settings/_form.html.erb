@@ -42,6 +42,11 @@
   </div>
 
   <div class="mb-2">
+    <%= form.label :category_id, class: 'form-label' %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-select'%>
+  </div>
+
+  <div class="mb-2">
     <%= form.submit(class: 'btn btn-primary')%>
   </div>
 <% end %>
