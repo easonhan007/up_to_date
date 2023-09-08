@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
   def cat
     @category = Category.where(slug: params[:slug]).first
+    @title = @category.name
     unless @category
       redirect_to root_path, notice: 'Can not find the category'
     end
