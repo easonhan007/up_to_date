@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   end
 
   def users
-    if not current_user.id.eql?(1)
+    if not current_user.is_admin?()
       redirect_to root_path, msg: 'Can not access this page'
     end
 

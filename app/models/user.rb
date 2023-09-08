@@ -18,4 +18,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :crawler_settings
+
+  def is_admin?
+    id == 1
+  end
+
 end
