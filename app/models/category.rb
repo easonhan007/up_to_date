@@ -11,7 +11,7 @@
 #
 class Category < ApplicationRecord
   belongs_to :user
-  has_many :crawler_settings
+  has_many :crawler_settings, dependent: :nullify
 
   validates :name, :slug, presence: true
 
