@@ -19,7 +19,11 @@
           <tr>
             <td><%= setting.id %></td>
             <td><%= link_to setting.name, setting %></td>
-            <td><%= link_to setting.category.name, setting.category %></td>
+            <% if setting.category %>
+              <td><%= link_to setting.category.name, setting.category %></td>
+            <% else %>
+              <td></td>
+            <% end %>
             <td><%= time_ago_in_words setting.created_at %></td>
             <td><%= link_to 'Edit', edit_crawler_setting_path(setting), class: 'btn btn-primary btn-sm' %></td>
             <td>
