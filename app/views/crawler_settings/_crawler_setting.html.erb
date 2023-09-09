@@ -29,9 +29,11 @@
       <%= crawler_setting.detail_page_clean_up_css %>
     </code>
   </dd>
-  <dt class="col-3">Category</dt>
-  <dd class="col-9">
-    <%= link_to crawler_setting.category.name, crawler_setting.category %>
-  </dd>
+  <% if crawler_setting.category %>
+    <dt class="col-3">Category</dt>
+    <dd class="col-9">
+      <%= link_to crawler_setting.category.name, crawler_setting.category %>
+    </dd>
+  <% end %>
 </dl>
 </div>
