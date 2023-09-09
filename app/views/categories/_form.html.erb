@@ -22,6 +22,11 @@
   </div>
 
   <div class="mb-2">
+    <%= form.label :weight, class: 'form-label' %>
+    <%= form.number_field :weight, class: 'form-control' %>
+  </div>
+
+  <div class="mb-2">
     <%= form.submit('Save', class: 'btn btn-primary') %>
   </div>
 <% end %>

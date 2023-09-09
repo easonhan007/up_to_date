@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @categories = Category.order('created_at DESC')
+    @categories = Category.order('weight DESC').order('created_at DESC')
     @custom_layout = "col-md-12"
   end
 

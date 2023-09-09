@@ -8,14 +8,18 @@
   <thead>
     <th>ID</th>
     <th>Name</th>
+    <th>Weight</th>
     <th>Created At</th>
+    <th>Operation</th>
   </thead>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= link_to category.id, category %></td>
         <td><%= category.name %></td>
+        <td><%= category.weight %></td>
         <td><%= time_ago_in_words category.created_at %> ago </td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-sm btn-primary'%></td>
       </tr>
     <% end %>
   </tbody>
