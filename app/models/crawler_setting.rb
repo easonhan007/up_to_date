@@ -40,7 +40,7 @@ class CrawlerSetting < ApplicationRecord
 					if url.to_s.start_with?('/')
 						url = domain + url.to_s
 					else
-						next
+						url = url
 					end #if
 				end
 
