@@ -10,14 +10,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body >
     <%= render('shared/nav')%>
-    <div class="container">
+    <main class="container" style="min-height:86vh">
       <div class="row">
         <div class="<%= @custom_layout || 'col-md-10' %>">
             <%= yield %>
         </div>
       </div>
-    </div>
+    </main>
+    <%= render('shared/footer')%>
   </body>
 </html>
