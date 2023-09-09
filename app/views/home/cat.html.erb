@@ -1,8 +1,8 @@
-<% @category.crawler_settings.each do |setting|%>
+<% @cats.each do |cat|%>
     <div class="row">
         <div class="col col-md-8">
-            <h5><%= setting.name %></h5>
-            <%= render partial: 'shared/post_list', locals: {posts: setting.posts.recent } %> 
+            <h5><%= cat[:name] %></h5>
+            <%= render partial: 'shared/post_table', locals: { posts: cat[:posts], pagy: cat[:pagy] } %> 
         </div>
     </div>
 <% end %>
