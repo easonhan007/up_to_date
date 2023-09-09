@@ -23,7 +23,7 @@ class CrawlerSetting < ApplicationRecord
   validates :name, :index_page_url, :index_page_css, :detail_page_title_css, :detail_page_content_css, presence: true
 
   def scrape
-		uri = URI.parse(index_page_url)
+		uri = URI.parse(index_page_url.strip)
 		# FIXME missing port support
     host = uri.host
 		domain = "#{uri.scheme}://#{uri.host}"
@@ -40,7 +40,17 @@ class CrawlerSetting < ApplicationRecord
 					if url.to_s.start_with?('/')
 						url = domain + url.to_s
 					else
-						url = url
+						Rails.logger.info(url)
+						res = URI.parse(url.to_s) rescue false
+						if res
+							if res.host
+								url = url
+							else
+								url = "#{domain}/#{url}"
+							end
+						else
+							next
+						end #if
 					end #if
 				end
 
