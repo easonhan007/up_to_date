@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: categories
+# Table name: favorites
 #
 #  id         :integer          not null, primary key
-#  name       :string
 #  user_id    :integer          not null
+#  post_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  slug       :string
-#  weight     :integer          default(0)
 #
 require "test_helper"
 
-class CategoryTest < ActiveSupport::TestCase
+class FavoriteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

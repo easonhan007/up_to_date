@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  slug       :string
+#  weight     :integer          default(0)
 #
 class Category < ApplicationRecord
   belongs_to :user

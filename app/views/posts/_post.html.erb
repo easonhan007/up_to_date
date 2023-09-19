@@ -6,6 +6,10 @@
   <p ><%= link_to post.from, post.from %></p> 
 </div>
 
+
+  <%= render partial: 'favorites_button', locals: { post: post, user: current_user }%>
+
+
 <article style="font-size: 1.1em">
   <%== post.content %>
 </article>

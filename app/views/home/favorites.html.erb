@@ -1,0 +1,10 @@
+<section class="my-2">
+	<ul class="list-unstyled mb-4">
+		<% @favorites.each do |post| %>
+			<li><%= link_to post.title, post %></li>	
+		<% end %>
+	</ul>
+	<div class="mb-2">
+		<%== pagy_bootstrap_nav(@pagy) %>
+	</div>
+</section>

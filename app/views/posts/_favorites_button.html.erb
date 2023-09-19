@@ -1,0 +1,7 @@
+<%= turbo_frame_tag post do %>
+<% if post.is_favorited_by(user) %>
+    <%= link_to 'Remove from favorites', remove_from_favorites_post_path(post), class: 'btn btn-sm btn-outline-warning mb-2', data: {turbo_method: 'DELETE'} %>
+<% else %>
+    <%= link_to 'Add to favorites', add_to_favorites_post_path(post), class: 'btn btn-sm btn-outline-success mb-2', data: {turbo_method: 'POST'} %>
+<% end %>
+<% end %>

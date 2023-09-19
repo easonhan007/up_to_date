@@ -23,6 +23,10 @@ class HomeController < ApplicationController
 
   end
 
+  def favorites
+    @pagy, @favorites = pagy current_user.favorite_posts.order('created_at DESC')
+  end
+
   def users
     if not current_user.is_admin?()
       redirect_to root_path, msg: 'Can not access this page'

@@ -1,20 +1,14 @@
 # == Schema Information
 #
-# Table name: categories
+# Table name: favorites
 #
 #  id         :integer          not null, primary key
-#  name       :string
 #  user_id    :integer          not null
+#  post_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  slug       :string
-#  weight     :integer          default(0)
 #
-
-one:
-  name: MyString
-  user: one
-
-two:
-  name: MyString
-  user: two
+class Favorite < ApplicationRecord
+  belongs_to :user
+  belongs_to :post
+end

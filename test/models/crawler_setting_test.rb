@@ -12,7 +12,7 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  detail_page_clean_up_css :text
-#  category_id              :integer          default(1), not null
+#  category_id              :integer          default(1)
 #
 require "test_helper"
 

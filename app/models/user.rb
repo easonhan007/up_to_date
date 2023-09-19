@@ -18,6 +18,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :crawler_settings
+  has_many :favorites
+  has_many :favorite_posts, through: :favorites, source: :post
 
   def is_admin?
     id == 1
