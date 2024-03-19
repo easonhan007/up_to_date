@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  get "up" => "home#up", as: :rails_health_check
   get "home/users"
   get "home/favorites"
   get "home/cat/:slug", to: 'home#cat', as: 'cat'
