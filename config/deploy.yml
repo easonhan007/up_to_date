@@ -8,7 +8,7 @@ image: nbkhic/up-to-date
 servers:
   web: # Use a named role, so it can be used as entrypoint by Traefik
     hosts:
-      - SERVER_IP
+      - <%= ENV['SERVER_IP']%>
     labels:
       traefik.http.routers.up-to-date-web.entrypoints: websecure
       traefik.http.routers.up-to-date-web.rule: Host(`up.ethanhan.cc`)
