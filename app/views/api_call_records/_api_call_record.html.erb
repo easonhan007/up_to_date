@@ -1,0 +1,19 @@
+<div id="<%= dom_id api_call_record %>">
+    <h3 class="text-center">
+      <%= api_call_record.sent_status %>
+      <%= link_to api_call_record.post.title, api_call_record.post %>
+    </h3>
+    <div class="d-flex gap-4 justify-content-center">
+      <p> <%= link_to api_call_record.post_target.name, api_call_record.post_target %> </p>
+      <p> <%= api_call_record.user.email %> </p>
+      <p> <%= api_call_record.created_at.to_fs(:short) %> </p>
+    </div>
+
+  <div class="my-4">
+    <pre>
+      <%= api_call_record.log.gsub(',', ",\n") %>
+    </pre>
+  </div>
+
+
+</div>

@@ -6,13 +6,16 @@
   <p ><%= link_to post.from, post.from %></p> 
 </div>
 
-
-  
-  <% if current_user %>
+<% if current_user %>
+  <div class="d-flex gap-2">
     <%= render partial: 'favorites_button', locals: { post: post, user: current_user }%>
-  <% end %>
-  
+    <%= render partial: 'send_to_form', locals: { api_call_record: @api_call_record }%>
+  </div>
+<% end %>
 
+<div class="w-100">
+  <img src="<%= post.image_url%>" alt="" class="img-fluid">
+</div>
 
 <article style="font-size: 1.1em">
   <%== post.content %>

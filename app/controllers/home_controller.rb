@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-	skip_before_action :authenticate_user!, only: [:index, :up]
 
   def index
     @categories = Category.order('weight DESC').order('created_at DESC')

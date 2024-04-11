@@ -79,3 +79,7 @@ end
 gem "devise", "~> 4.9"
 gem "whenever", "~> 1.0", require: false
 gem 'pagy', '~> 6.0' # omit patch digit
+gem "pexels"
+gem "ruby-openai"
+
+gem "litestack", "~> 0.4.3"

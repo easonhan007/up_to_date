@@ -1,0 +1,47 @@
+<%= form_with(model: post_target) do |form| %>
+  <% if post_target.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post_target.errors.count, "error") %> prohibited this post_target from being saved:</h2>
+
+      <ul>
+        <% post_target.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-2">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :api, class: 'form-label' %>
+    <%= form.text_field :api, class: 'form-control', placeholder: 'https://example.com/api/v1/', required: true %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :query, class: 'form-label' %>
+    <%= form.text_field :query, class: 'form-control', placeholder: "foo=1&bar=2" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :headers, class: 'form-label' %>
+    <%= form.text_area :headers, class: 'form-control', placeholder: 'JSON string', rows: 5 %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :field_mapping, class: 'form-label' %>
+    <%= form.text_area :field_mapping, class: 'form-control', placeholder: 'JSON, default {content-type: application/json}', rows: 5, required: true %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :success_code, class: 'form-label' %>
+    <%= form.number_field :success_code, class: 'form-control', placeholder: 'default 200' %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.submit(class: 'btn btn-primary') %>
+  </div>
+<% end %>

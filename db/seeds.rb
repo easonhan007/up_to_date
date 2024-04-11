@@ -27,3 +27,10 @@ CrawlerSetting.create(name: 'vox',
 	detail_page_content_css: 'div.c-entry-content',
 	detail_page_clean_up_css: '.c-article-footer,.c-float-right,.m-ad'
 )
+
+puts "creating basic settings"
+%w[openai_key openapi_base_url pexels_api_key].each do |key|
+	if not Setting.where(name: key).exists?
+		Setting.create(name: key, value: key)
+	end #if
+end

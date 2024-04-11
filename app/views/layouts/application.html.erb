@@ -11,13 +11,10 @@
   </head>
 
   <body >
+    <%= render('shared/flash')%>
     <%= render('shared/nav')%>
     <main class="container" style="min-height:86vh">
-      <div class="row">
-        <div class="<%= @custom_layout || 'col-md-10' %>">
-            <%= yield %>
-        </div>
-      </div>
+      <%= yield %>
     </main>
     <%= render('shared/footer')%>
   </body>

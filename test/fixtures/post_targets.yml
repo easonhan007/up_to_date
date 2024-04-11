@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: post_targets
+#
+#  id            :integer          not null, primary key
+#  api           :string
+#  key           :string
+#  headers       :text             default("{\"Content-Type\": \"application/json\"}")
+#  field_mapping :text
+#  success_code  :integer          default(200)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  name          :string
+#  query         :string
+#
+
+one:
+  api: MyString
+  key: MyString
+  headers: MyText
+  field_mapping: MyText
+  success_code: 1
+
+two:
+  api: MyString
+  key: MyString
+  headers: MyText
+  field_mapping: MyText
+  success_code: 1

@@ -10,6 +10,8 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  crawler_setting_id :integer          not null
+#  slug               :string
+#  image_url          :string
 #
 require "test_helper"
 

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_09_19_032203) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_081521) do
+  create_table "api_call_records", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "post_target_id"
+    t.integer "status_code"
+    t.text "log"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "user_id", null: false
@@ -43,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_19_032203) do
     t.datetime "updated_at", null: false
     t.text "detail_page_clean_up_css"
     t.integer "category_id", default: 1
+    t.string "image_keyword"
     t.index ["category_id"], name: "index_crawler_settings_on_category_id"
     t.index ["user_id"], name: "index_crawler_settings_on_user_id"
   end
@@ -56,6 +67,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_19_032203) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "post_targets", force: :cascade do |t|
+    t.string "api"
+    t.string "key"
+    t.text "headers", default: "{\"Content-Type\": \"application/json\"}"
+    t.text "field_mapping"
+    t.integer "success_code", default: 200
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "query"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -64,8 +87,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_19_032203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "crawler_setting_id", null: false
+    t.string "slug"
+    t.string "image_url"
     t.index ["crawler_record_id"], name: "index_posts_on_crawler_record_id"
     t.index ["crawler_setting_id"], name: "index_posts_on_crawler_setting_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "name"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

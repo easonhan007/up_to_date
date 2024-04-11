@@ -1,0 +1,26 @@
+<%= turbo_frame_tag :call_api_form, class: "d-flex gap-4" do %>
+    <%= form_with(model: api_call_record) do |form| %>
+    <% if api_call_record.errors.any? %>
+        <div style="color: red">
+        <h2><%= pluralize(api_call_record.errors.count, "error") %> prohibited this api_call_record from being saved:</h2>
+
+        <ul>
+            <% api_call_record.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.hidden_field :post_id %>
+        <%= form.hidden_field :user_id %>
+    </div>
+
+    <div class="d-flex gap-4">
+        <%= form.collection_select :post_target_id, PostTarget.order('created_at'), :id, :name, {}, class: 'form-select-sm'%>
+        <%= form.submit('Send', class: 'btn btn-sm btn-primary') %>
+    </div>
+    <% end %>
+<% end %>
+

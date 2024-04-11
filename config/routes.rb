@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :api_call_records
+  resources :post_targets
+  resources :settings
   resources :categories
   resources :posts do
     member do 

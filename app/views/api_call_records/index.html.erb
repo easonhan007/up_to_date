@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h3>Api call records</h3>
+
+<table id="api_call_records" class="table">
+  <thead>
+    <th>ID</th>
+    <th>Status</th>
+    <th>Post</th>
+    <th>Target</th>
+    <th>Created At</th>
+  </thead>
+  <tbody>
+    <% @api_call_records.each do |record| %>
+      <tr>
+        <td><%= link_to record.id, record %></td>
+        <td><%= record.sent_status %></td>
+        <td><%= link_to record.post.title, record.post %></td>
+        <td><%= link_to record.post_target.name, record.post_target %></td>
+        <td title="<%= record.created_at.to_fs(:short)%>" ><%= time_ago_in_words record.created_at %> ago </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New api call record", new_api_call_record_path %>

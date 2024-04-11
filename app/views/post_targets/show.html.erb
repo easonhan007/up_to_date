@@ -1,0 +1,6 @@
+<%= render @post_target %>
+
+<div class="d-flex gap-4 my-4">
+  <%= button_to "Destroy this post target", @post_target, method: :delete, class: "btn btn-danger" %>
+  <%= link_to "Back to post targets", post_targets_path, class: "btn btn-secondary" %>
+</div>

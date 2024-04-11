@@ -68,8 +68,8 @@ class CrawlerSettingsController < ApplicationController
   end
 
   def scrape
-    @crawler_setting.scrape()
-    redirect_to crawler_records_url, notice: 'Finished'
+    CrawlerJob.perform_later @crawler_setting
+    redirect_to crawler_records_url, notice: 'The crawler job will be running in backend'
   end
 
   private
@@ -82,6 +82,6 @@ class CrawlerSettingsController < ApplicationController
     def crawler_setting_params
       params.require(:crawler_setting).permit(:name, :index_page_url, 
         :index_page_css, :detail_page_title_css, :category_id,
-        :detail_page_content_css, :detail_page_clean_up_css)
+        :detail_page_content_css, :detail_page_clean_up_css, :image_keyword)
     end
 end

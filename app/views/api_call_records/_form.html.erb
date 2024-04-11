@@ -1,0 +1,42 @@
+<%= form_with(model: api_call_record) do |form| %>
+  <% if api_call_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(api_call_record.errors.count, "error") %> prohibited this api_call_record from being saved:</h2>
+
+      <ul>
+        <% api_call_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :post_id, style: "display: block" %>
+    <%= form.number_field :post_id %>
+  </div>
+
+  <div>
+    <%= form.label :post_target_id, style: "display: block" %>
+    <%= form.number_field :post_target_id %>
+  </div>
+
+  <div>
+    <%= form.label :status_code, style: "display: block" %>
+    <%= form.number_field :status_code %>
+  </div>
+
+  <div>
+    <%= form.label :log, style: "display: block" %>
+    <%= form.text_area :log %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

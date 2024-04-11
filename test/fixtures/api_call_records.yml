@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: api_call_records
+#
+#  id             :integer          not null, primary key
+#  post_id        :integer
+#  post_target_id :integer
+#  status_code    :integer
+#  log            :text
+#  user_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  post_id: 1
+  post_target_id: 1
+  status_code: 1
+  log: MyText
+  user_id: 1
+
+two:
+  post_id: 1
+  post_target_id: 1
+  status_code: 1
+  log: MyText
+  user_id: 1

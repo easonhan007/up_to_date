@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-2">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+  <div class="mb-2">
+    <%= form.label :content, class: "form-label" %>
+    <%= form.text_area :content, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :from, style: "display: block" %>
-    <%= form.text_field :from %>
+  <div class="mb-2">
+    <%= form.label :from, class: "form-label" %>
+    <%= form.text_field :from, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :crawler_record_id, style: "display: block" %>
-    <%= form.text_field :crawler_record_id %>
+  <div class="mb-2">
+    <%= form.label :crawler_record_id, class: "form-label" %>
+    <%= form.text_field :crawler_record_id, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-2">
+    <%= form.submit(class: 'btn btn-primary') %>
   </div>
 <% end %>

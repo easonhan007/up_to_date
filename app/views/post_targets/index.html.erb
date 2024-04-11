@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h3>Post targets</h3>
+
+<div id="post_targets" class="row gap-4">
+  <% @post_targets.each do |post_target| %>
+    <%= render post_target %>
+  <% end %>
+</div>
+
+<%= link_to "New post target", new_post_target_path %>

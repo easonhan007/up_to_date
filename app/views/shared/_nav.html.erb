@@ -21,9 +21,11 @@
                         data:{turbo_method: 'delete'}%>
                 </li>
                 <li><hr class="dropdown-divider"></li>
-                <li class="nav-item"><%= link_to 'Setting', crawler_settings_path, class: 'dropdown-item' %></li>
-                <li class="nav-item"><%= link_to 'History', crawler_records_path, class: 'dropdown-item' %></li>
+                <li class="nav-item"><%= link_to 'Crawler Setting', crawler_settings_path, class: 'dropdown-item' %></li>
+                <li class="nav-item"><%= link_to 'Post Target', post_targets_path, class: 'dropdown-item' %></li>
+                <li class="nav-item"><%= link_to 'System Setting', settings_path, class: 'dropdown-item' %></li>
                 <li class="nav-item"><%= link_to 'Category', categories_path, class: 'dropdown-item' %></li>
+                <li class="nav-item"><%= link_to 'History', crawler_records_path, class: 'dropdown-item' %></li>
               </ul>
             </li>
           <% else %>

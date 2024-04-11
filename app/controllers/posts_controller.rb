@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @title = @post.title
+    @api_call_record = ApiCallRecord.new(user_id: current_user.id, post_id: @post.id)
   end
 
   # GET /posts/new
