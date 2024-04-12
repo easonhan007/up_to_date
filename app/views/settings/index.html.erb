@@ -1,4 +1,7 @@
-<h3>Settings</h3>
+<div class="d-flex my-4 gap-4">
+  <h3>Settings</h3>
+  <%= link_to "New", new_setting_path, class: "btn btn-primary" %>
+</div>
 
 <div id="settings">
   <table class="table">
@@ -21,4 +24,3 @@
   </table>
 </div>
 
-<%= link_to "New setting", new_setting_path, class: 'btn btn-primary my-4' %>

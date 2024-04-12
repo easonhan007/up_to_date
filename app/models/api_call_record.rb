@@ -88,8 +88,8 @@ class ApiCallRecord < ApplicationRecord
     # Fetch Request
     res = http.request(req)
     return res
-  # rescue StandardError => e
-  #   return OpenStruct.new(code: 999, body: e.message)
+  rescue StandardError => e
+    return OpenStruct.new(code: 999, body: e.message)
   end
 
 end

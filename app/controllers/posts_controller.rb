@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy add_to_favorites remove_from_favorites]
+  before_action :set_post, only: %i[ show edit update destroy add_to_favorites remove_from_favorites rewrite_title]
+  before_action :set_openai_key, only: %i[ show rewrite_title]
 	skip_before_action :authenticate_user!, only: [:show]
+  
+  helper_method :openai_key_valid?
 
   # GET /posts or /posts.json
   def index
@@ -89,14 +92,40 @@ class PostsController < ApplicationController
     end
   end
 
+  def rewrite_title
+    if openai_key_valid?(@openai_key)
+      @openapi_base_url = Setting.get("openapi_base_url")
+      prompt = Setting.get("title_rewrite_prompt")
+      @title_rewrite_prompt = prompt.blank? ? 'Rework this sentence to make it more engaging:' : prompt
+      AiCompletionJob.perform_later(@post, @openai_key, @openapi_base_url, @title_rewrite_prompt)
+      @message = "🎉"
+    else
+      @message = "😭" 
+    end
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
 
+    def set_openai_key
+      @openai_key = Setting.get('openai_key')
+    end
+
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :content, :from, :crawler_record_id)
+    end
+
+    def rewrite_params
+      params.require(:post).permit(:id)
+    end
+
+    def openai_key_valid?(key)
+      (not key.blank?) and (not key.eql?('openai_key'))
     end
 end

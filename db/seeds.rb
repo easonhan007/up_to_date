@@ -29,7 +29,7 @@ CrawlerSetting.create(name: 'vox',
 )
 
 puts "creating basic settings"
-%w[openai_key openapi_base_url pexels_api_key].each do |key|
+%w[openai_key openapi_base_url pexels_api_key title_rewrite_prompt].each do |key|
 	if not Setting.where(name: key).exists?
 		Setting.create(name: key, value: key)
 	end #if

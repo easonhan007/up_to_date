@@ -1,31 +1,26 @@
-<div class="row">
-  <div class="col-md-8">
-
-  <table class="table mb-2">
-    <thead>
-      <th>ID</th>
-      <th>Crawler</th>
-      <th>Total</th>
-      <th>Success</th>
-      <th>Failed</th>
-      <th>Created At</th>
-    </thead>
-    <tbody>
-      <% @crawler_records.each do |r| %>
-        <tr>
-          <td><%= link_to r.id, crawler_record_path(r) %></td>
-          <td><%= link_to r.crawler_setting.name, crawler_setting_path(r.crawler_setting) %></td>
-          <td><%= r.url_count%></td>
-          <td><%= r.success%></td>
-          <td><%= r.failed%></td>
-          <td><%= time_ago_in_words(r.created_at) %> ago </td>
-        </tr> 
-      <% end %>
-      
-    </tbody>
-  </table>
-  <div class="mb-2">
-    <%== pagy_bootstrap_nav(@pagy) %>
-  </div>    
-  </div>
-</div>
+<table class="table mb-2">
+  <thead>
+    <th>ID</th>
+    <th>Crawler</th>
+    <th>Total</th>
+    <th>Success</th>
+    <th>Failed</th>
+    <th>Created At</th>
+  </thead>
+  <tbody>
+    <% @crawler_records.each do |r| %>
+      <tr>
+        <td><%= link_to r.id, crawler_record_path(r) %></td>
+        <td><%= link_to r.crawler_setting.name, crawler_setting_path(r.crawler_setting), style: "text-decoration:none" %></td>
+        <td><%= r.url_count%></td>
+        <td><%= r.success%></td>
+        <td><%= r.failed%></td>
+        <td><%= time_ago_in_words(r.created_at) %> ago </td>
+      </tr> 
+    <% end %>
+    
+  </tbody>
+</table>
+<div class="mb-2 d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>    

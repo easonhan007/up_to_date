@@ -3,7 +3,7 @@
     <%= render @post %>
   </div>
   <div class="col-md-3 my-2 offset-md-1">
-    <%= render partial: 'api_records', locals: {api_records: @post.api_call_records } %> 
+    <%= render partial: 'api_records', locals: {api_records: @post.api_call_records.order('created_at DESC') } %> 
 
     <h6>Related Posts</h6>
     <%= render partial: 'shared/post_list', locals: {posts: @post.crawler_setting.posts.recent } %> 

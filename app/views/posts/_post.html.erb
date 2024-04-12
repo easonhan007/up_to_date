@@ -1,6 +1,13 @@
-<h3 class="mb-2">
-  <%= post.title %>
-</h3>
+<div class="mb-2 d-flex gap-4">
+  <h3> <%= post.title %> </h3>
+  <% if openai_key_valid?(@openai_key) %>
+    <%= turbo_frame_tag :post_title_area do %>
+        <%= form_with model: post, url:rewrite_title_post_path(post), method: 'post' do |f| %>
+          <%= f.submit('💡 Rewrite', class: 'btn btn-success btn-sm')%>
+        <% end %>
+    <% end %>
+  <% end #if %>
+</div>
 <div class="mb-2">
   <p class="mb-1"> <%= link_to post.crawler_setting.name, post.crawler_setting, class: 'text text-secondary',style:"text-decoration: none;"%> </p>
   <p ><%= link_to post.from, post.from %></p> 

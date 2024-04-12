@@ -1,33 +1,30 @@
-<div class="row">
-  <div class="col-md-12">
-    <table class="table mb-2">
-      <thead>
-        <th>title</th>
-        <th>crawler</th>
-        <th>from</th>
-        <th>created at</th>
-        <th>updated at</th>
-        <th>operation</th>
-        <th></th>
-      </thead>
-      <tbody>
-        <% @posts.each do |post|%>
-          <tr>
-            <td style="font-size:1.1em" title="<%= post.title %>"><%= link_to post.title.truncate(60), post_path(post)%></td>
-            <td><%= post.crawler_setting.name %></td>
-            <td title="<%= post.from %>"><%= post.from.truncate 20 %></td>
-            <td title="<%= post.created_at.to_fs(:short)%>"><%= time_ago_in_words post.created_at %> ago </td>
-            <td title="<%= post.updated_at.to_fs(:short)%>"><%= time_ago_in_words post.updated_at %> ago </td>
-            <td> <%= button_to "❌", post, method: :delete, class: 'btn btn-sm' %> </td>
-            <td> <%= link_to "🖊️", edit_post_path(post), class: 'btn btn-sm' %> </td>
-          </tr>   
-        <% end %>
-      </tbody>
-    </table>
+<table class="table mb-2">
+  <thead>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Crawler</th>
+    <th>Created At</th>
+    <th>Updated At</th>
+    <th>Operation</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @posts.each do |post|%>
+      <tr>
+        <td><%= post.id %></td>
+        <td style="font-size:1.1em" title="<%= post.title %>">
+          <%= link_to post.title.truncate(60), post_path(post), style: "text-decoration:none"%>
+        </td>
+        <td><%= link_to post.crawler_setting.name, post.crawler_setting %></td>
+        <td title="<%= post.created_at.to_fs(:short)%>"><%= time_ago_in_words post.created_at %> ago </td>
+        <td title="<%= post.updated_at.to_fs(:short)%>"><%= time_ago_in_words post.updated_at %> ago </td>
+        <td> <%= button_to "❌", post, method: :delete, class: 'btn btn-sm' %> </td>
+        <td> <%= link_to "🖊️", edit_post_path(post), class: 'btn btn-sm' %> </td>
+      </tr>   
+    <% end %>
+  </tbody>
+</table>
 
-    <div class="mb-2">
-      <%== pagy_bootstrap_nav(@pagy) %>
-    </div>    
-
-  </div>
-</div>
+<div class="my-4 d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>    

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do 
       post 'add_to_favorites'
       delete 'remove_from_favorites'
+      post 'rewrite_title'
     end
   end
   resources :crawler_records
