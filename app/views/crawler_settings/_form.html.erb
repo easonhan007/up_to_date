@@ -48,7 +48,7 @@
 
   <div class="mb-2">
     <%= form.label :category_id, class: 'form-label' %>
-    <%= form.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-select'%>
+    <%= form.collection_select :category_id, Category.order('created_at DESC').all, :id, :name, {}, class: 'form-select'%>
   </div>
 
   <div class="mb-2">
