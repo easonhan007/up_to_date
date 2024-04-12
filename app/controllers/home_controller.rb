@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_user, only: %i[ up ]
+  skip_before_action :authenticate_user!, only: %i[ up ]
 
   def index
     default_limit = 6
