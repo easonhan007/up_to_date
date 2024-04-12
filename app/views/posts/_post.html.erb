@@ -8,9 +8,9 @@
     <% end %>
   <% end #if %>
 </div>
-<div class="mb-2">
-  <p class="mb-1"> <%= link_to post.crawler_setting.name, post.crawler_setting, class: 'text text-secondary',style:"text-decoration: none;"%> </p>
-  <p ><%= link_to post.from, post.from %></p> 
+<div class="mb-2 d-flex gap-4">
+  <p> <%= link_to post.crawler_setting.name, post.crawler_setting, class: 'text text-secondary',style:"text-decoration: none;"%> </p>
+  <p> <%= link_to 'Source', post.from, style: "text-decoration:none" %></p> 
 </div>
 
 <% if current_user %>
