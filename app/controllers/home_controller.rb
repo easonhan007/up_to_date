@@ -2,11 +2,11 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ up ]
 
   def index
-    default_limit = 6
+    default_limit = 8
     default_order = 'updated_at DESC'
     @crawlers = CrawlerSetting.order(default_order).limit(default_limit)
-    @crawler_records = CrawlerRecord.order('created_at DESC').limit(default_limit)
-    @posts = Post.order(default_order).limit(default_limit)
+    @crawler_records = CrawlerRecord.includes(:crawler_setting).order('created_at DESC').limit(default_limit)
+    @posts = Post.includes(:crawler_setting).order(default_order).limit(default_limit)
     @api_records = ApiCallRecord.order('created_at DESC').limit(default_limit)
   end
 

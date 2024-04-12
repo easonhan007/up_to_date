@@ -7,7 +7,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @pagy, @posts = pagy(Post.by_created.all)
+    @pagy, @posts = pagy(Post.includes(:crawler_setting).by_created.all)
+    if params[:view].eql?('grid')
+      render :grid_index
+    else
+      render :index
+    end #if
   end
 
   # GET /posts/1 or /posts/1.json

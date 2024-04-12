@@ -1,20 +1,13 @@
-<section class="my-2 col-12 col-md-8 mx-auto">
-	<table class="table">
-		<thead>
-			<th>Title</th>
-			<th>Category</th>
-		</thead>
-		<tbody>
-		<% @favorites.each do |post| %>
-			<tr> 
-				<td><%= link_to post.title, post, style: "text-decoration:none" %></td>
-				<td><%= link_to post.crawler_setting.category.name, post.crawler_setting.category %></td>
-			</tr>
+<% @favorites.in_groups_of(4).each do |post_list| %>
+	<div class="row my-4">
+		<% post_list.each do |post| %>
+			<div class="col-12 col-md-3">
+				<%= render partial: 'posts/grid', locals: {post: post} %>
+			</div>	
 		<% end %>
-		</tbody>
-	</table>
-
-	<div class="my-5 flex justify-content-center">
-		<%== pagy_bootstrap_nav(@pagy) %>
 	</div>
-</section>
+<% end %>
+
+<div class="my-5 flex justify-content-center">
+	<%== pagy_bootstrap_nav(@pagy) %>
+</div>
