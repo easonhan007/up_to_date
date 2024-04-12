@@ -69,6 +69,7 @@ class CrawlerSettingsController < ApplicationController
 
   def scrape
     CrawlerJob.perform_later @crawler_setting
+    @crawler_setting.touch(:updated_at)
     redirect_to crawler_records_url, notice: 'The crawler job will be running in backend'
   end
 

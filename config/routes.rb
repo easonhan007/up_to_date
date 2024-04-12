@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   root "home#index"
   get "up" => "home#up", as: :rails_health_check
   get "home/users"
-  get "home/favorites"
+  get "home/favorites", as: 'favorites'
   get "home/cat/:slug", to: 'home#cat', as: 'cat'
 end

@@ -1,7 +1,13 @@
 <div id="<%= dom_id api_call_record %>">
     <h3 class="text-center">
       <%= api_call_record.sent_status %>
-      <%= link_to api_call_record.post.title, api_call_record.post %>
+      <% if api_call_record.post %>
+        <%= link_to api_call_record.post.title, api_call_record.post %>
+      <% else %>
+      <p>
+        <del>Post deleted</del>
+      </p>
+      <% end %>
     </h3>
     <div class="d-flex gap-4 justify-content-center">
       <p> <%= link_to api_call_record.post_target.name, api_call_record.post_target %> </p>
@@ -11,7 +17,9 @@
 
   <div class="my-4">
     <pre>
-      <%= api_call_record.log.gsub(',', ",\n") %>
+      <% if api_call_record.log %>
+          <%= api_call_record.log.gsub(',', ",\n") %>
+      <% end %>
     </pre>
   </div>
 

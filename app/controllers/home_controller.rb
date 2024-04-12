@@ -1,13 +1,16 @@
 class HomeController < ApplicationController
 
   def index
-    @categories = Category.order('weight DESC').order('created_at DESC')
-    @custom_layout = "col-md-12"
+    default_limit = 6
+    default_order = 'updated_at DESC'
+    @crawlers = CrawlerSetting.order(default_order).limit(default_limit)
+    @crawler_records = CrawlerRecord.order('created_at DESC').limit(default_limit)
+    @posts = Post.order(default_order).limit(default_limit)
+    @api_records = ApiCallRecord.order('created_at DESC').limit(default_limit)
   end
 
   def cat
     @category = Category.where(slug: params[:slug]).first
-    @custom_layout = "col-md-12"
     @title = @category.name
     unless @category
       redirect_to root_path, notice: 'Can not find the category'

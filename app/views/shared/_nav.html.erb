@@ -6,9 +6,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item"><%= link_to 'Posts', posts_path, class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to 'Favorites', '/home/favorites', class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to 'API Records', api_call_records_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Posts', posts_path, class: nav_kls(posts_path) %></li>
+        <li class="nav-item"><%= link_to 'Crawlers', crawler_settings_path, class: nav_kls(crawler_settings_path) %></li>
+        <li class="nav-item"><%= link_to 'Targets', post_targets_path, class: nav_kls(post_targets_path) %></li>
+        <li class="nav-item"><%= link_to 'Crawler Records', crawler_records_path, class: nav_kls(crawler_records_path) %></li>
+        <li class="nav-item"><%= link_to 'API Records', api_call_records_path, class: nav_kls(api_call_records_path) %></li>
+        <li class="nav-item"><%= link_to 'Favorites', $avorites_path, class: nav_kls(favorites_path) %></li>
          <% if current_user %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,11 +25,8 @@
                         data:{turbo_method: 'delete'}%>
                 </li>
                 <li><hr class="dropdown-divider"></li>
-                <li class="nav-item"><%= link_to 'Crawler Setting', crawler_settings_path, class: 'dropdown-item' %></li>
-                <li class="nav-item"><%= link_to 'Post Target', post_targets_path, class: 'dropdown-item' %></li>
                 <li class="nav-item"><%= link_to 'System Setting', settings_path, class: 'dropdown-item' %></li>
-                <li class="nav-item"><%= link_to 'Category', categories_path, class: 'dropdown-item' %></li>
-                <li class="nav-item"><%= link_to 'History', crawler_records_path, class: 'dropdown-item' %></li>
+                <li class="nav-item"><%= link_to 'Category Setting', categories_path, class: 'dropdown-item' %></li>
               </ul>
             </li>
           <% else %>

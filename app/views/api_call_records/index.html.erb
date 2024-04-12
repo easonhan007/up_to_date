@@ -15,7 +15,11 @@
       <tr>
         <td><%= link_to record.id, record %></td>
         <td><%= record.sent_status %></td>
-        <td><%= link_to record.post.title, record.post %></td>
+        <% if record.post %>
+          <td><%= link_to record.post.title, record.post %></td>
+        <% else %>
+          <td><del>Post deleted</del></td>
+        <% end %>
         <td><%= link_to record.post_target.name, record.post_target %></td>
         <td title="<%= record.created_at.to_fs(:short)%>" ><%= time_ago_in_words record.created_at %> ago </td>
       </tr>

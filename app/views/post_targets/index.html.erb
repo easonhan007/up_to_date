@@ -1,6 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
-<h3>Post targets</h3>
+<div class="d-flex gap-4 my-4">
+  <h3>Post targets</h3>
+  <%= link_to "New", new_post_target_path, class: 'btn btn-primary' %>
+</div>
 
 <div id="post_targets" class="row gap-4">
   <% @post_targets.each do |post_target| %>
@@ -8,4 +9,3 @@
   <% end %>
 </div>
 
-<%= link_to "New post target", new_post_target_path %>
