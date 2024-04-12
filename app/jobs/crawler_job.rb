@@ -111,7 +111,7 @@ class CrawlerJob < ApplicationJob
 		default_img = Rails.configuration.x.default_post_image
 		api_key = Setting.get('pexels_api_key')
     # pexels_api_key set as pexels_api_key by seeds.rb
-		if api_key.blank or api_key.eql?('pexels_api_key')
+		if api_key.blank? or api_key.eql?('pexels_api_key')
       count.times { |i| photos.push(default_img) }
       return photos
 		end
