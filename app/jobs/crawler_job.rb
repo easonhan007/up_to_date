@@ -48,6 +48,7 @@ class CrawlerJob < ApplicationJob
         # ensure all the images looks good
         post_doc.css('img').each do |img|
           img['class'] = 'img-fluid'
+          img['loading'] = 'lazy'
         end #each
 
         title = post_doc.at_css(setting.detail_page_title_css.strip).content rescue ''

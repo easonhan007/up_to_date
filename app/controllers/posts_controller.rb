@@ -123,7 +123,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :from, :crawler_record_id)
+      params.require(:post).permit(:title, :content, :from, :crawler_record_id, :image_url, :slug)
     end
 
     def rewrite_params

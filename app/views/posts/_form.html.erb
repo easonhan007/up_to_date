@@ -17,18 +17,23 @@
   </div>
 
   <div class="mb-2">
+    <%= form.label :slug, class: "form-label" %>
+    <%= form.text_field :slug, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :image_url, class: "form-label" %>
+    <%= form.text_field :image_url, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
     <%= form.label :content, class: "form-label" %>
-    <%= form.text_area :content, class: "form-control" %>
+    <%= form.text_area :content, class: "form-control", rows: 10 %>
   </div>
 
   <div class="mb-2">
     <%= form.label :from, class: "form-label" %>
     <%= form.text_field :from, class: "form-control" %>
-  </div>
-
-  <div class="mb-2">
-    <%= form.label :crawler_record_id, class: "form-label" %>
-    <%= form.text_field :crawler_record_id, class: "form-control" %>
   </div>
 
   <div class="mb-2">

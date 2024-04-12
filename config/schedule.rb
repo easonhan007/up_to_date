@@ -19,8 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "/path/to/my/cron_log.log"
+set :output, "/rails/storage/cron_log.log"
 
 every 12.hours do
-  rake "rake scrape:one"
+  command "echo 'crontab works'"
 end
