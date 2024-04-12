@@ -16,14 +16,13 @@
 class Post < ApplicationRecord
   belongs_to :crawler_record
   belongs_to :crawler_setting
+  has_many :favorites
+  has_many :api_call_records
 
   validates :title, :content, :from, presence: true
 
   scope :by_created, -> {order('created_at DESC')}
   scope :recent, -> {by_created.limit(20)}
-
-  has_many :favorites
-  has_many :api_call_records
 
   def is_favorited_by(user)
     Favorite.exists?(user_id: user.id, post_id: self.id)

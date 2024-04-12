@@ -11,7 +11,7 @@
         <li class="nav-item"><%= link_to 'Targets', post_targets_path, class: nav_kls(post_targets_path) %></li>
         <li class="nav-item"><%= link_to 'Crawler Records', crawler_records_path, class: nav_kls(crawler_records_path) %></li>
         <li class="nav-item"><%= link_to 'API Records', api_call_records_path, class: nav_kls(api_call_records_path) %></li>
-        <li class="nav-item"><%= link_to 'Favorites', $avorites_path, class: nav_kls(favorites_path) %></li>
+        <li class="nav-item"><%= link_to 'Favorites', favorites_path, class: nav_kls(favorites_path) %></li>
          <% if current_user %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

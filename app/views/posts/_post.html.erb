@@ -2,7 +2,7 @@
   <%= post.title %>
 </h3>
 <div class="mb-2">
-  <p class="text text-secondary mb-1"> <%= post.crawler_setting.name %> </p>
+  <p class="mb-1"> <%= link_to post.crawler_setting.name, post.crawler_setting, class: 'text text-secondary',style:"text-decoration: none;"%> </p>
   <p ><%= link_to post.from, post.from %></p> 
 </div>
 
@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<div class="w-100">
+<div class="w-100 my-2">
   <img src="<%= post.image_url%>" alt="" class="img-fluid">
 </div>
 
