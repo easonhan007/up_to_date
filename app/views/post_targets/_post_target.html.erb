@@ -1,5 +1,5 @@
-<div class="card col-sm-12 col-md-4" id="<%= dom_id post_target %>">
-  <div class="card-body">
+<div class="card" id="<%= dom_id post_target %>">
+  <div class="card-body" style="min-height: 24em">
     <h5 class="card-title"><%= post_target.name %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= post_target.api %></h6>
     <p class="card-text">
@@ -10,6 +10,6 @@
       <li><code><%= post_target.success_code%></code></li>
     </ul>
     </p>
-    <a href="<%= edit_post_target_path(post_target)%>" class="card-link">edit</a>
+      <a href="<%= edit_post_target_path(post_target)%>" class="card-link btn btn-primary btn-sm">edit</a>
   </div>
 </div>

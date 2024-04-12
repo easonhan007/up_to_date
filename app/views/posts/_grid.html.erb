@@ -2,7 +2,7 @@
     <div class="card">
         <img class="card-img-top" src="<%= to_cover post.image_url%>" alt="<%= post.title %>">
         <div class="card-body" style="min-height: 16em">
-            <h5 class="card-title"><%= link_to post.title.truncate(100), post%></h5>
+            <h5 class="card-title"><%= link_to post.title.truncate(100), post, style: "text-decoration: none" %></h5>
             <p class="card-text"><%= link_to post.crawler_setting.name, post.crawler_setting %></p>
             <p class="text text-secondary my-0">Created <%= time_ago_in_words post.created_at%> ago </p>
             <p class="text text-secondary">Updated <%= time_ago_in_words post.created_at%> ago </p>

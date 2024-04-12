@@ -12,7 +12,7 @@
         <td><%= link_to record.id, record %></td>
         <td><%= record.sent_status %></td>
         <% if record.post %>
-          <td><%= link_to record.post.title, record.post, style: "text-decoration:none" %></td>
+          <td><%= link_to record.post.title.truncate(80), record.post, style: "text-decoration:none" %></td>
         <% else %>
           <td><del>Post deleted</del></td>
         <% end %>

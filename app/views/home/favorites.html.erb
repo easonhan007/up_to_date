@@ -1,9 +1,11 @@
 <% @favorites.in_groups_of(4).each do |post_list| %>
 	<div class="row my-4">
 		<% post_list.each do |post| %>
-			<div class="col-12 col-md-3">
-				<%= render partial: 'posts/grid', locals: {post: post} %>
-			</div>	
+			<% if post %>
+				<div class="col-12 col-md-3">
+					<%= render partial: 'posts/grid', locals: {post: post} %>
+				</div>	
+			<% end %>
 		<% end %>
 	</div>
 <% end %>

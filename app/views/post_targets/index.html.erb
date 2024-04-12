@@ -3,9 +3,17 @@
   <%= link_to "New", new_post_target_path, class: 'btn btn-primary' %>
 </div>
 
-<div id="post_targets" class="row gap-4">
-  <% @post_targets.each do |post_target| %>
-    <%= render post_target %>
+<div id="post_targets" class="my-2">
+  <% @post_targets.in_groups_of(4).each do |post_target_list| %>
+    <div class="row">
+    <% post_target_list.each do |post_target| %>
+      <div class="col-12 col-md-3">
+        <% if post_target %>
+          <%= render post_target %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
   <% end %>
 </div>
 
