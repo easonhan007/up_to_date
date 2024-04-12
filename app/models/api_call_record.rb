@@ -71,6 +71,10 @@ class ApiCallRecord < ApplicationRecord
     http = Net::HTTP.new(uri.host, uri.port)
     # body = JSON.dump(data)
 
+    if uri.scheme.eql?('https')
+      http.use_ssl = true
+    end
+
     # Create Request
     req =  Net::HTTP::Post.new(uri)
     # Add headers

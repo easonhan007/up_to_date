@@ -7,6 +7,8 @@
         <th>from</th>
         <th>created at</th>
         <th>updated at</th>
+        <th>operation</th>
+        <th></th>
       </thead>
       <tbody>
         <% @posts.each do |post|%>
@@ -14,8 +16,10 @@
             <td style="font-size:1.1em" title="<%= post.title %>"><%= link_to post.title.truncate(60), post_path(post)%></td>
             <td><%= post.crawler_setting.name %></td>
             <td title="<%= post.from %>"><%= post.from.truncate 20 %></td>
-            <td><%= time_ago_in_words post.created_at %> ago </td>
-            <td><%= time_ago_in_words post.updated_at %> ago </td>
+            <td title="<%= post.created_at.to_fs(:short)%>"><%= time_ago_in_words post.created_at %> ago </td>
+            <td title="<%= post.updated_at.to_fs(:short)%>"><%= time_ago_in_words post.updated_at %> ago </td>
+            <td> <%= button_to "❌", post, method: :delete, class: 'btn btn-sm' %> </td>
+            <td> <%= link_to "🖊️", edit_post_path(post), class: 'btn btn-sm' %> </td>
           </tr>   
         <% end %>
       </tbody>
