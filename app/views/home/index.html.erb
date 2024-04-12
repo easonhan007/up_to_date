@@ -28,9 +28,9 @@
 </div>
 
 <% @posts.in_groups_of(4).each do |post_list|%>
-    <div class="row my-2">
+    <div class="row my-4">
         <% post_list.each do |post| %>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 p-1">
                 <%= render partial: 'posts/grid', locals: {post: post} %> 
             </div>
         <% end %>
