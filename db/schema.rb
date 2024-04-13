@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_11_081521) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_13_042221) do
   create_table "api_call_records", force: :cascade do |t|
     t.integer "post_id"
     t.integer "post_target_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_081521) do
     t.integer "crawler_setting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "log"
     t.index ["crawler_setting_id"], name: "index_crawler_records_on_crawler_setting_id"
   end
 

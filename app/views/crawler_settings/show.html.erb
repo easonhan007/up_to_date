@@ -7,12 +7,14 @@
     <%= link_to "Scrape", scrape_crawler_setting_path(@crawler_setting), class: 'btn btn-success' %> 
   </div>
   <div class="col">
-    <%= link_to "Edit this crawler setting", edit_crawler_setting_path(@crawler_setting), class: 'btn btn-primary' %> 
+    <%= link_to "Edit", edit_crawler_setting_path(@crawler_setting), class: 'btn btn-primary' %> 
   </div>
   <div class="col">
-    <%= link_to "Back to crawler settings", crawler_settings_path, class: 'btn btn-secondary' %>
+    <%= button_to "Destroy", @crawler_setting, method: :delete, class: 'btn btn-danger' %>
   </div>
   <div class="col">
-    <%= button_to "Destroy this crawler setting", @crawler_setting, method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Duplicate', new_crawler_setting_path(from: @crawler_setting.id), class: 'btn btn-info' %>
   </div>
 </div>
+
+<%= render partial: 'posts/post_list', locals: {need_pagy: true, posts: @posts} %>

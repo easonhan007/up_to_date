@@ -6,10 +6,25 @@ class CrawlerJob < ApplicationJob
 		# FIXME missing port support
     host = uri.host
 		domain = "#{uri.scheme}://#{uri.host}"
-    doc = Nokogiri::HTML(URI.open(setting.index_page_url))
+    begin
+      doc = Nokogiri::HTML(URI.open(setting.index_page_url)) 
+    rescue => e
+			r = CrawlerRecord.create(crawler_setting_id: setting.id, log: e.message)
+      return
+    end
+
     post_urls = []
     posts = []
-    doc.css(setting.index_page_css).each do |link|
+    error_msgs = []
+
+    begin
+      index_links = doc.css(setting.index_page_css) 
+    rescue
+			r = CrawlerRecord.create(crawler_setting_id: setting.id, log: e.message)
+      return 
+    end
+
+    index_links.each do |link|
       post_urls.push(link.attribute('href'))
     end
 
@@ -35,15 +50,12 @@ class CrawlerJob < ApplicationJob
 
         post = {}
 				Rails.logger.info("Start to crawler #{url}")
-        post_doc = Nokogiri::HTML5(URI.open(url))
-
-				unless setting.detail_page_clean_up_css.blank?
-					setting.detail_page_clean_up_css.split(',').each do |css|
-						post_doc.css(css.strip).each do |part|
-							part.inner_html = ''
-						end #each 
-					end #each
-				end #unless
+        begin
+          post_doc = Nokogiri::HTML5(URI.open(url))
+        rescue => e
+          error_msgs << {url: url, message: e.message, type: 'Can not open url'}
+          next 
+        end
 
         # ensure all the images looks good
         post_doc.css('img').each do |img|
@@ -51,10 +63,36 @@ class CrawlerJob < ApplicationJob
           img['loading'] = 'lazy'
         end #each
 
-        title = post_doc.at_css(setting.detail_page_title_css.strip).content rescue ''
-        # body = post_doc.at_css(detail_page_content_css.strip).inner_html rescue ''
+        begin
+          title = post_doc.at_css(setting.detail_page_title_css.strip).content
+        rescue => e
+          error_msgs << {url: url, message: e.message, type: "Can not identify title using #{setting.detail_page_title_css}"}
+          next
+        end
+
+				unless setting.detail_page_clean_up_css.blank?
+					setting.detail_page_clean_up_css.split(',').each do |css|
+            begin
+              parts = post_doc.css(css.strip)
+            rescue => e
+              error_msgs << {url: url, message: e.message, type: "Clear #{css} failed"}
+              next 
+            end
+
+						parts.each do |part|
+							part.inner_html = ''
+						end #each 
+					end #each
+				end #unless
+
 				body_arr = []
-				post_doc.css(setting.detail_page_content_css.strip).each do |dom|
+        begin
+          body_parts = post_doc.css(setting.detail_page_content_css.strip)
+        rescue => e
+          error_msgs << {url: url, message: e.message, type: "Can not identify title using #{setting.detail_page_title_css}"}
+          next
+        end
+				body_parts.each do |dom|
 					body_arr.push(dom.inner_html)
 				end
 				# if (not title.blank?) and (not body.blank?)
@@ -71,9 +109,11 @@ class CrawlerJob < ApplicationJob
 			success = posts.size
 			failed = total - success
 			urls = JSON.dump(post_urls)
-			r = CrawlerRecord.create(url_count:total, success: success, failed: failed, urls: urls, crawler_setting_id: setting.id)
+      log = JSON.dump(error_msgs)
+			r = CrawlerRecord.create(url_count:total, success: success, failed: failed, urls: urls, crawler_setting_id: setting.id, log: log)
 		else
-			r = CrawlerRecord.create(url_count:0, success: 0, failed: 0,  crawler_setting_id: setting.id)
+      log = JSON.dump(error_msgs)
+			r = CrawlerRecord.create(url_count:0, success: 0, failed: 0,  crawler_setting_id: setting.id, log: log)
 		end #unless
 
     if not setting.image_keyword.blank?

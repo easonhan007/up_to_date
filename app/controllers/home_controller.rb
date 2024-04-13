@@ -27,6 +27,7 @@ class HomeController < ApplicationController
   end
 
   def favorites
+    @title = 'My Favorites'
     @pagy, @favorites = pagy current_user.favorite_posts.order('created_at DESC')
   end
 

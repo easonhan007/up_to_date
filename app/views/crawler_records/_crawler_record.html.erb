@@ -14,14 +14,19 @@
     <%= crawler_record.failed %>
   </p>
 
-  <p>
-    <strong>Urls:</strong>
-    <%= crawler_record.urls %>
-  </p>
+  <strong>Urls:</strong>
+  <pre>
+    <%= crawler_record.urls.gsub(",", ",\n") %>
+  </pre>
+
+  <strong>Log:</strong>
+  <pre>
+    <%= crawler_record.log.gsub(",", ",\n") %>
+  </pre>
 
   <p>
     <strong>Crawler setting:</strong>
-    <%= crawler_record.crawler_setting_id %>
+    <%= link_to crawler_record.crawler_setting.name, crawler_record.crawler_setting %>
   </p>
 
 </div>

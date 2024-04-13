@@ -9,6 +9,8 @@ class CrawlerSettingsController < ApplicationController
 
   # GET /crawler_settings/1 or /crawler_settings/1.json
   def show
+    @title = @crawler_setting.name
+    @pagy, @posts = pagy Post.includes(:crawler_setting).where(crawler_setting_id: @crawler_setting.id).order('updated_at DESC')
   end
 
   # GET /crawler_settings/new

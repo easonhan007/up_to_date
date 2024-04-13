@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @crawler_record %>
 
-<div>
-  <%= link_to "Edit this crawler record", edit_crawler_record_path(@crawler_record) %> |
-  <%= link_to "Back to crawler records", crawler_records_path %>
+<div class="d-flex gap-4">
+  <%= link_to "Edit", edit_crawler_record_path(@crawler_record), class: 'btn btn-primary' %> 
+  <%= link_to "Back", crawler_records_path, class: 'btn btn-secondary' %>
 
-  <%= button_to "Destroy this crawler record", @crawler_record, method: :delete %>
+  <%= button_to "Destroy", @crawler_record, method: :delete, class: 'btn btn-danger' %>
 </div>
