@@ -16,12 +16,12 @@
 
   <strong>Urls:</strong>
   <pre>
-    <%= crawler_record.urls.gsub(",", ",\n") %>
+    <%= crawler_record.urls.gsub(",", ",\n") rescue crawler_record.urls %>
   </pre>
 
   <strong>Log:</strong>
   <pre>
-    <%= crawler_record.log.gsub(",", ",\n") %>
+    <%= crawler_record.log.gsub(",", ",\n") rescue crawler_record.log %>
   </pre>
 
   <p>

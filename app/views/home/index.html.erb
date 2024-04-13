@@ -19,8 +19,8 @@
                     <td title="<%= r.created_at.to_fs(:short)%>">
                         <%= link_to r.crawler_setting.name, r.crawler_setting %>
                     </td>
-                    <td>✅ <%= link_to r.success, r, class: "text-decoration-none" %></td>
-                    <td>❌ <%= link_to r.failed, r, class: "text-decoration-none" %></td>
+                    <td>✅ <%= link_to r.success || 0, r, class: "text-decoration-none" %></td>
+                    <td>❌ <%= link_to r.failed || 0, r, class: "text-decoration-none" %></td>
                 </tr>
             <% end %>
         </table>

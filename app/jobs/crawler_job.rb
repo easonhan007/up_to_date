@@ -1,3 +1,4 @@
+require 'open-uri'
 class CrawlerJob < ApplicationJob
   queue_as :default
 

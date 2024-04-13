@@ -12,9 +12,9 @@
       <tr>
         <td><%= link_to r.id, crawler_record_path(r) %></td>
         <td><%= link_to r.crawler_setting.name, crawler_setting_path(r.crawler_setting), style: "text-decoration:none" %></td>
-        <td><%= r.url_count%></td>
-        <td><%= r.success%></td>
-        <td><%= r.failed%></td>
+        <td><%= r.url_count || 0%></td>
+        <td><%= r.success || 0%></td>
+        <td><%= r.failed || 0%></td>
         <td><%= time_ago_in_words(r.created_at) %> ago </td>
       </tr> 
     <% end %>

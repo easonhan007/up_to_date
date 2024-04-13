@@ -1,6 +1,5 @@
-require 'open-uri'
 class CrawlerSettingsController < ApplicationController
-  before_action :set_crawler_setting, only: %i[ show edit update destroy, scrape ]
+  before_action :set_crawler_setting, only: %i[ show edit update destroy scrape ]
 
   # GET /crawler_settings or /crawler_settings.json
   def index

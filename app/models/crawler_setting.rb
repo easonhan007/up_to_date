@@ -18,8 +18,8 @@
 class CrawlerSetting < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :crawler_records
-  has_many :posts
+  has_many :crawler_records, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   validates :name, :index_page_url, :index_page_css, :detail_page_title_css, :detail_page_content_css, presence: true
 
