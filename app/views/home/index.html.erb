@@ -19,8 +19,9 @@
                     <td><%= link_to r.crawler_setting.name, r.crawler_setting %></td>
                     <td>✅ <%= r.success %></td>
                     <td>❌ <%= r.failed %></td>
-                    <td title="<%= r.created_at.to_fs(:short)%>">⏱️ <%= time_ago_in_words(r.created_at)%> ago</td>
-                    <td><%= link_to 'View', r, class: 'btn btn-secondary btn-sm' %></td>
+                    <td title="<%= r.created_at.to_fs(:short)%>">
+                        ⏱️ <%= link_to time_ago_in_words(r.created_at), r, style: 'text-decoration:none'%> ago
+                    </td>
                 </tr>
             <% end %>
         </table>
