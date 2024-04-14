@@ -5,19 +5,20 @@
             <% @crawlers.each do |c|%>
                 <tr>
                     <td><%= link_to c.name, c%></td>
+                    <td><%= link_to c.category.name, c.category%></td>
                     <td><%= link_to "Scrape", scrape_crawler_setting_path(c), class: 'btn btn-success btn-sm' %></td>
                 </tr>
             <% end %>
         </table>
     </div>
 
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-12">
     <h5 class="text-center">Crawler Records</h5>
         <table class="table">
             <% @crawler_records.each do |r|%>
                 <tr>
-                    <td title="<%= r.created_at.to_fs(:short)%>">
-                        <%= link_to r.crawler_setting.name, r.crawler_setting %>
+                    <td title="<%= time_ago_in_words r.created_at%> ago ">
+                        <%= link_to r.crawler_setting.name.truncate(20), r.crawler_setting %>
                     </td>
                     <td>✅ <%= link_to r.success || 0, r, class: "text-decoration-none" %></td>
                     <td>❌ <%= link_to r.failed || 0, r, class: "text-decoration-none" %></td>

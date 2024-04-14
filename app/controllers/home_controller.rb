@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     default_limit = 8
     default_order = 'updated_at DESC'
-    @crawlers = CrawlerSetting.activated.order(default_order).limit(default_limit)
+    @crawlers = CrawlerSetting.includes(:category).activated.order(default_order).limit(default_limit)
     @crawler_records = CrawlerRecord.includes(:crawler_setting).order('created_at DESC').limit(default_limit)
     @posts = Post.includes(:crawler_setting).order(default_order).limit(default_limit)
     @api_records = ApiCallRecord.order('created_at DESC').limit(default_limit)
