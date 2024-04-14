@@ -3,7 +3,7 @@ class CrawlerSettingsController < ApplicationController
 
   # GET /crawler_settings or /crawler_settings.json
   def index
-    @pagy, @crawler_settings = pagy current_user.crawler_settings.includes(:category).order('created_at DESC').order('active ASC').all
+    @pagy, @crawler_settings = pagy current_user.crawler_settings.includes(:category).order('active ASC').order('created_at DESC').all
   end
 
   # GET /crawler_settings/1 or /crawler_settings/1.json
