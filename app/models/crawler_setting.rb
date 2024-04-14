@@ -23,5 +23,11 @@ class CrawlerSetting < ApplicationRecord
 
   validates :name, :index_page_url, :index_page_css, :detail_page_title_css, :detail_page_content_css, presence: true
 
+	scope :activated, ->{ where(active: true) }
+
+	def name_with_status
+		self[:active] ? self[:name] : "⚒️ #{self[:name]}"
+	end
+
 
 end

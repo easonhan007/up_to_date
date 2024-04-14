@@ -16,6 +16,11 @@
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
+  <div class="mb-2 form-check">
+    <%= form.check_box :active, class: 'form-check-input' %>
+    <%= form.label :active, class: 'form-check-label' %>
+  </div>
+
   <div class="mb-2">
     <%= form.label :image_keyword, class: 'form-label' %>
     <%= form.text_field :image_keyword, class: 'form-control' %>

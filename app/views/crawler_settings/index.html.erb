@@ -11,7 +11,11 @@
         <div class="card">
           <img class="card-img-top" src="<%= rand_cover %>" alt="cover" loading="lazy" style="height: 14em">
           <div class="card-body" style="min-height: 10em">
-            <h5 class="card-title"><%= link_to setting.name, setting, class: "text-decoration-none"%></h5>
+            <h5 class="card-title">
+              <%= link_to setting.name_with_status, 
+                  setting, 
+                  class: "text-decoration-none #{setting.active? ? '' : 'text text-secondary'}" %>
+            </h5>
             <% if setting.category.present? %>
               <p class="card-text"><%= link_to setting.category.name, setting.category, class: 'text text-success' %></p>
             <% end %>

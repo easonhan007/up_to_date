@@ -2,7 +2,7 @@ class ApiController < ActionController::API
   before_action :verify_api_key
 
   def scrape_all
-    settings = CrawlerSetting.order('updated_at ASC').all
+    settings = CrawlerSetting.activated.order('updated_at ASC').all
     settings.each do |setting|
       CrawlerJob.perform_later setting
       setting.touch(:updated_at)

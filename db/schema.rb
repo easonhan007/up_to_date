@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_13_042221) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_14_043042) do
   create_table "api_call_records", force: :cascade do |t|
     t.integer "post_id"
     t.integer "post_target_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_13_042221) do
     t.text "detail_page_clean_up_css"
     t.integer "category_id", default: 1
     t.string "image_keyword"
+    t.boolean "active", default: false
     t.index ["category_id"], name: "index_crawler_settings_on_category_id"
     t.index ["user_id"], name: "index_crawler_settings_on_user_id"
   end

@@ -83,7 +83,7 @@ class CrawlerSettingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def crawler_setting_params
       params.require(:crawler_setting).permit(:name, :index_page_url, 
-        :index_page_css, :detail_page_title_css, :category_id,
+        :index_page_css, :detail_page_title_css, :category_id, :active,
         :detail_page_content_css, :detail_page_clean_up_css, :image_keyword)
     end
 end
